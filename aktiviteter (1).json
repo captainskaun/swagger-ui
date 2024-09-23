@@ -1,0 +1,168 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "aktiviteter",
+        "description": "Henter en eller flere aktiviteter tilknyttet et firma.Fra begrepsverdier, begrepsverdi 'B1'. Aktiviteter er tilknyttet prosjekter.",
+        "version": "v1"
+    },
+    "servers": [
+        {
+            "url": "https://dfo-prod.azure-api.net/aktiviteter/v1"
+        }
+    ],
+    "paths": {
+        "/{firma}": {
+            "get": {
+                "summary": "Hent aktiviteter",
+                "description": "Hent aktiviteter",
+                "operationId": "hent-aktiviteter",
+                "parameters": [
+                    {
+                        "name": "firma",
+                        "in": "path",
+                        "description": "Firmakode ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "select",
+                        "in": "query",
+                        "description": "Select names of the columns that are required",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "OData syntax for filtering",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "The returned objects can be sorted in a specific order",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The index of the first object (inclusive) to be returned",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "The maximum number of the objects to be returned",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Får 200 OK ved gyldig spørring og ved tomme lister",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "attributeId": "B1",
+                                    "attributeName": "AKTIVITET",
+                                    "attributeValue": "1",
+                                    "companyId ": "72",
+                                    "customValue": "0.0",
+                                    "description": "Arbeidspakke 1",
+                                    "owner": "Abc",
+                                    "ownerAttributeId": "",
+                                    "ownerAttributeName": "",
+                                    "periodFrom": "0",
+                                    "periodTo": "209999",
+                                    "status": "N",
+                                    "lastUpdated": "",
+                                    "updatedAt": "2019-10-28T14:19:09.0000000+00:00",
+                                    "updatedBy": "0-ABCD"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "{\n  \"code\": 0,\n  \"message\": \"string\"\n}"
+                    },
+                    "404": {
+                        "description": "Får 404 Not Found ved feil i spørring"
+                    }
+                }
+            }
+        },
+        "/{firma}/{aktivitet}": {
+            "get": {
+                "summary": "Hent en aktivitet",
+                "description": "Hent en aktivitet",
+                "operationId": "hent-en-aktivitet",
+                "parameters": [
+                    {
+                        "name": "firma",
+                        "in": "path",
+                        "description": "Firmakode ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "aktivitet",
+                        "in": "path",
+                        "description": "Aktivitet ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Får 200 OK ved gyldig spørring og ved tomme lister",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "attributeId": "B1",
+                                    "attributeName": "AKTIVITET",
+                                    "attributeValue": "1",
+                                    "companyId ": "72",
+                                    "customValue": "0.0",
+                                    "description": "Arbeidspakke 1",
+                                    "owner": "Abc",
+                                    "ownerAttributeId": "",
+                                    "ownerAttributeName": "",
+                                    "periodFrom": "0",
+                                    "periodTo": "209999",
+                                    "status": "N",
+                                    "lastUpdated": "",
+                                    "updatedAt": "2019-10-28T14:19:09.0000000+00:00",
+                                    "updatedBy": "0-ABCD"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "{\n  \"code\": 0,\n  \"message\": \"string\"\n}"
+                    },
+                    "404": {
+                        "description": "Får 404 Not Found ved feil i spørring"
+                    }
+                }
+            }
+        }
+    },
+    "components": {},
+    "x-ms-export-notes": [
+        "Definitions/body parameters are not exported since this API references multiple schemas with OpenAPI components as opposed to one. Schemas referenced: 1610957431249,1611925161993"
+    ]
+}
